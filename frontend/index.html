@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Stop Words Finder | DFA Recognizer</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+<div class="app-container">
+
+  <!-- Input Page -->
+  <div id="inputPage" class="page active">
+    <div class="page-header">
+      <h1>Stop Words Finder</h1>
+      <p>DFA-based recognizer for English &amp; Malay stop words</p>
+    </div>
+
+    <div class="card">
+      <h2>Enter Text</h2>
+      <textarea id="inputText" rows="6" placeholder="Paste your text here..."></textarea>
+
+      <div class="sample-texts">
+        <p class="sample-label">Select a sample text or upload a file:</p>
+        <div class="sample-buttons">
+          <button class="sample-btn" data-sample="1">Sample 1</button>
+          <button class="sample-btn" data-sample="2">Sample 2</button>
+          <button class="sample-btn" data-sample="3">Sample 3</button>
+        </div>
+      </div>
+
+      <div class="drag-drop-area" id="dropZone">
+        <div id="dragDropContent">
+          <p>Drag &amp; drop a .txt file here</p>
+          <p class="or-text">or</p>
+          <label for="fileUpload" class="file-label">Browse Files</label>
+          <input type="file" id="fileUpload" accept=".txt" />
+        </div>
+        <div id="selectedFileInfo" class="selected-file-info" style="display:none">
+          <span id="fileNameDisplay"></span>
+          <button id="clearFileBtn" class="clear-file-btn">✕</button>
+        </div>
+      </div>
+
+      <button id="processBtn" class="primary-btn">Analyze Text</button>
+    </div>
+  </div>
+
+  <!-- Results Page -->
+  <div id="resultsPage" class="page">
+    <div class="page-header">
+      <div class="header-row">
+        <button id="backBtn" class="circle-back">←</button>
+        <h1>Analysis Results</h1>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="main">
+        Stop Words <span id="countBadge" class="count-badge">0</span>
+      </button>
+      <button class="tab-btn" data-tab="dfa">DFA</button>
+    </div>
+
+    <!-- Tab 1 – Stop Words -->
+    <div id="mainTab" class="tab-content active">
+      <div class="card">
+        <h2>Stop Words</h2>
+        <div class="summary-header">
+          <span class="gray-text">Input text is</span>
+          <span id="statusInline" class="status-inline">---</span>
+          <span class="gray-text">.</span>
+          <span id="statusMessage" class="gray-text"></span>
+          <span class="gray-text">Found</span>
+          <span class="total-highlight" id="totalHighlight">0</span>
+          <span class="gray-text">occurrences of stop words. Occurrences per stop word:</span>
+        </div>
+        <div class="stats-chips" id="statsChips"></div>
+      </div>
+
+      <div class="card">
+        <h2>Highlighted Text</h2>
+        <p class="trace-note">Stop words are highlighted in yellow.</p>
+        <div class="visualised-text" id="visualisedText"></div>
+      </div>
+
+      <div class="card">
+        <h2>Detected Stop Words</h2>
+        <p class="trace-note">Each row shows a detected stop word with its position and highlighted preview.</p>
+        <div class="trace-wrapper">
+          <table class="trace-table" id="detailedTable">
+            <thead>
+              <tr><th>No.</th><th>Stop Word</th><th>Position</th><th>Preview</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 2 – DFA Process -->
+    <div id="dfaTab" class="tab-content">
+      <div class="card">
+        <h2>DFA Process</h2>
+        <p class="trace-note">Each row = one character processed. Shows how the DFA moves between states.</p>
+        <div class="trace-wrapper">
+          <table class="trace-table">
+            <thead>
+              <tr><th>Char</th><th>State Transition (From → To)</th><th>Description</th></tr>
+            </thead>
+            <tbody id="traceBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>
