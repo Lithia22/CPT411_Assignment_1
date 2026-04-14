@@ -1,7 +1,7 @@
 # CPT411 Assignment 1 – DFA Recognizer
 
-**Course:** CPT411 – Automata Theory & Formal Languages  
-**Language:** English Stop Words Finder (L6)
+**Course:** CPT411 – Automata Theory & Formal Languages
+**Language:** English Stop Words Finder
 
 **Team Members:**
 
@@ -31,7 +31,7 @@ A Deterministic Finite Automaton (DFA) that reads text **one character at a time
 ### 1. Clone the repository
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Lithia22/CPT411_Assignment_1.git
 cd CPT411_Assignment_1
 ```
 
@@ -45,9 +45,6 @@ pip install -r requirements.txt
 python app.py
 ```
 
-Server runs at `http://localhost:5000`
+### 3. Open in browser
 
-### 3. Open frontend
-
-Open `frontend/index.html` in your browser.
-```
+Go to `http://localhost:5000`
