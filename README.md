@@ -1,8 +1,5 @@
 # CPT411 Assignment 1 – DFA Recognizer
 
-**Course:** CPT411 – Automata Theory & Formal Languages
-**Language:** English Stop Words Finder
-
 **Team Members:**
 
 - Kavitashini A/P Seluvarajoo
@@ -11,11 +8,35 @@
 
 ---
 
-## What It Does
+## Language Description
 
-A Deterministic Finite Automaton (DFA) that reads text **one character at a time** to detect English stop words (and, the, then, so, into, if, with).
+The DFA recognizes 25 English stop words across multiple categories:
 
-**Outputs:**
+| Category     | Words                                 |
+| ------------ | ------------------------------------- |
+| Articles     | a, an, the                            |
+| Prepositions | as, at, by, for, in, into, of, on, to |
+| Conjunctions | and, but, if, or, so                  |
+| Pronouns     | i, it, you, we, they                  |
+| Modals       | be, can                               |
+| Other        | is                                    |
+
+---
+
+## DFA Specifications
+
+- **Start State:** q0
+- **Trap State:** q∅ (dead state)
+- **States:** q0 to q44 (45 states)
+- **Processes text one character at a time** from left to right
+- **Non-letters act as word boundaries** (spaces, commas, periods, etc.)
+- **Undefined transitions go to trap state**
+
+The DFA reads text **character by character**, detects word boundaries using spaces and punctuation, and moves to the trap state q∅ when no valid transition exists.
+
+---
+
+## Outputs
 
 1. Status (ACCEPTED / REJECTED)
 2. Stop word found
