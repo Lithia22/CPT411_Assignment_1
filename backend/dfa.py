@@ -79,9 +79,9 @@ class StopWordDFA:
         self.trace = []
 
     def _format_state(self, state):
-        """Convert numeric state to readable format (q0, q1, q∅ for trap)."""
+        """Convert numeric state to readable format (q0, q1, -1 for trap)."""
         if state == self.TRAP:
-            return "q∅"
+            return "-1"
         return f"q{state}"
 
     # ────────────────────────────────────────────────────────────────────────
