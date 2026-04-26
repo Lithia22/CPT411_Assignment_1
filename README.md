@@ -26,13 +26,13 @@ The DFA recognizes 25 English stop words across multiple categories:
 ## DFA Specifications
 
 - **Start State:** q0
-- **Trap State:** q∅ (dead state)
+- **Trap State:** -1 (dead state)
 - **States:** q0 to q44 (45 states)
 - **Processes text one character at a time** from left to right
 - **Non-letters act as word boundaries** (spaces, commas, periods, etc.)
 - **Undefined transitions go to trap state**
 
-The DFA reads text **character by character**, detects word boundaries using spaces and punctuation, and moves to the trap state q∅ when no valid transition exists.
+The DFA reads text **character by character**, detects word boundaries using spaces and punctuation, and moves to the trap state (-1) when no valid transition exists.
 
 ---
 
